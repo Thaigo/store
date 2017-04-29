@@ -1,6 +1,8 @@
 <h2 class="title text-center">Shop</h2>
-<div class="col-sm-4">
-    <% @products.each do |product| %>    
+<div class="container">
+<% @products.each do |product| %> 
+<div class="row"> 
+    <div class="col-sm-4">     
             <div class="product-image-wrapper">
                     <div class="single-products">                        
                         <div class="productinfo text-center">
@@ -28,8 +30,8 @@
                             <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
                             <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
                         </ul>
-                    </div>
-                
-        <% end %>            
-</div>	           			
-    
+                    </div>                
+                </div>      
+            </div>    
+<% end %>  
+</div>
