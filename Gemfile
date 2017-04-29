@@ -7,7 +7,6 @@ end
 
 
 gem 'rails', '~> 5.0.2'
-gem 'sqlite3'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -18,9 +17,24 @@ gem 'jbuilder', '~> 2.5'
 
 #My_gems
 gem 'bootstrap-sass'
+gem 'font-awesome-rails'
+gem 'paperclip'
+gem 'activeadmin', github: 'activeadmin'
+gem 'devise'
+gem 'toastr-rails'
+gem 'masonry-rails', '~> 0.2.1'
+gem "braintree", "~> 2.74.0"
+gem 'figaro'
+gem 'country_select'
+
+group :production do
+  gem 'rails_12factor'
+  gem 'pg'
+end
 
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'sqlite3'
 end
 
 group :development do

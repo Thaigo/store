@@ -1,0 +1,67 @@
+<section id="cart_items">
+	<div class="container">
+		<div class="breadcrumbs">
+			<ol class="breadcrumb">
+				<li><a href="#">Home</a></li>
+				<li class="active">Shopping Cart</li>
+			</ol>
+		</div>
+		<div class="table-responsive cart_info">
+			<table class="table table-condensed">
+				<thead>
+					<tr class="cart_menu">
+						<td class="image">Item</td>
+						<td class="description"></td>
+						<td class="price">Price</td>
+						<td class="quantity">Quantity</td>
+						<td class="total">Total</td>
+						<td></td>
+					</tr>
+				</thead>
+				
+				<tbody>
+				<% @cart.product_items.each do |item| %>
+					<tr>
+						<td >
+							<%= image_tag item.product.image(:thumb), class: "cart_product" %>
+						</td>
+						<td class="cart_description">
+							<h4><a href=""><%= item.product.title %></a></h4>
+							<p>Web ID: <%= item.product.id %></p>
+						</td>
+						<td class="cart_price">
+							<p><%= item.product.price %></p>
+						</td>
+						<td class="cart_quantity">
+							<div class="cart_quantity_button">
+								<a class="cart_quantity_up" href=""> + </a>
+								<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
+								<a class="cart_quantity_down" href=""> - </a>
+							</div>
+						</td>
+						<td class="cart_total">
+							<p class="cart_total_price"><%= item.product.price %></p>
+						</td>
+						<td class="cart_delete">
+							<%= button_to cart_path(@cart), method: :delete, class: "cart_quantity_delete" do  %>
+							<i class="fa fa-times"></i>
+							<%end%>
+						</td>
+					</tr>	
+					<% end %>					
+				</tbody>
+				
+			</table>
+		</div>
+	</div>
+</section> <!--/#cart_items-->
+
+<div class="container">
+	<h3>What would you like to do next?</h3>
+	<p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
+	<div class="shopper-informations">
+		<%= button_to "Check Out", new_order_path, method: :get, class: "btn btn-primary" %>
+	</div>
+</div>
+<br>
+<br>

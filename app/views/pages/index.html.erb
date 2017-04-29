@@ -1,0 +1,35 @@
+<h2 class="title text-center">Shop</h2>
+<div class="col-sm-4">
+    <% @products.each do |product| %>    
+            <div class="product-image-wrapper">
+                    <div class="single-products">                        
+                        <div class="productinfo text-center">
+                            <%= image_tag product.image %>
+                            <h2>R$ <%= product.price %></h2>
+                            <p> <%= product.description %> </p>
+
+                            <%= button_to product_items_path(product_id: product), class: "btn btn-default add-to-cart" do %>
+                                <i class="fa fa-shopping-cart"></i>Add to cart
+                            <% end %>
+                        </div>
+                        <div class="product-overlay">
+                            <div class="overlay-content">
+                                <h2>R$ <%= product.price %></h2>
+                                <p><%= product.description %></p>
+
+                                <%= button_to product_items_path(product_id: product), class: "btn btn-default add-to-cart" do  %>
+                                <i class="fa fa-shopping-cart"></i>Add to cart
+                                <% end %>
+                            </div>
+                        </div>                                
+                    </div>
+                    <div class="choose">
+                        <ul class="nav nav-pills nav-justified">
+                            <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                            <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+                        </ul>
+                    </div>
+                
+        <% end %>            
+</div>	           			
+    

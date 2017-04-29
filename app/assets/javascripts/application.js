@@ -12,5 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require masonry/jquery.masonry
 //= require bootstrap-sprockets
+//= require jquery.prettyPhoto
+//= require cable
+//= require price-range
+//= require html5shiv
+//= require toastr
 //= require_tree .
