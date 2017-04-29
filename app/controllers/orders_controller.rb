@@ -17,15 +17,13 @@ class OrdersController < ApplicationController
     end
 
     def create
-        @order = Order.new(order_params)        
-        if  @order.save
-            charge
-            if @result.success?
-                @order.add_product_items_from_cart(@cart)
-                Cart.destroy(session[:cart_id])
-                session[:cart_id] = nil
-                OrderNotifierMailer.received(@order).deliver
-                redirect_to root_url, notice: 'Thank You for Your Order'
+        @order = Order.new(order_params)   
+        @order.add_product_items_from_cart(@cart)     
+        if  @order.save                  
+            Cart.destroy(session[:cart_id])
+            session[:cart_id] = nil
+            OrderNotifierMailer.received(@order).deliver
+            redirect_to root_url, notice: 'Thank You for Your Order'
             else
                 flash[:error] = 'Check Your Cart'
                 redirect_to root_url, alert: @result.message
@@ -55,9 +53,5 @@ class OrdersController < ApplicationController
         params.require(:order).permit(:name, :email, :address, :city, :country)
     end
 
-    def charge
-        @result = Braintree::Transaction.sale (
-            amount: @cart.total_price,
-            payment_method_nonce: params[:payment_method_nonce] )
-    end
+    
 end
