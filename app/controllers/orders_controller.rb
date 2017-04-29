@@ -12,27 +12,22 @@ class OrdersController < ApplicationController
             redirect_to root_url, notice: 'Your Cart is Empty'
             return
         end
-        @order = Order.new
-        @client_token = Braintree::ClientToken.generate
+        @order = Order.new        
     end
 
     def create
         @order = Order.new(order_params)   
         @order.add_product_items_from_cart(@cart)     
-        if  @order.save                  
+        if  @order.save               
             Cart.destroy(session[:cart_id])
             session[:cart_id] = nil
             OrderNotifierMailer.received(@order).deliver
             redirect_to root_url, notice: 'Thank You for Your Order'
-            else
-                flash[:error] = 'Check Your Cart'
-                redirect_to root_url, alert: @result.message
-                @order.destroy
-            end
         else
-            @client_token = Braintree::ClientToken.generate
-            render :new
-        end
+            flash[:error] = 'Check Your Cart'
+            @order.destroy
+            redirect_to root_url
+        end       
     end
 
     def show
