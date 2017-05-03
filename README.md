@@ -1,24 +1,23 @@
-# README
+# Ruby on Rails - Store
+=========================================
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Summary
+-------
+Projeto site de e-commerce
 
-Things you may want to cover:
+Generated project characteristics
+-------------------------
 
-* Ruby version
+* Shopping Cart
+* Send Email
+* Administration and management of orders and products with Active Admin
+* gem 'Paperclip' - file attachment management tool
 
-* System dependencies
 
-* Configuration
+Prerequisites
+-------------
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Rails 5
+- bundle install
+- rails db:migrate
+- rails s
